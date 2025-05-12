@@ -39,7 +39,6 @@
                 <array>
                     <string>h5</string>
                     <string>hdf5</string>
-                    <string>thz</string>
                 </array>
                 <key>public.mime-type</key>
                 <string>application/x-hdf5</string>
