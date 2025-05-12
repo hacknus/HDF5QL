@@ -1,0 +1,24 @@
+{
+  "originHash" : "ad6c54fc6e0b75e56bbc8c5f423b4e3a3b824cd3208c708e8c90b69d77466d03",
+  "pins" : [
+    {
+      "identity" : "chdf5",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hacknus/CHDF5.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "77b0743618545d0eed3498f308a9a750d5b8c710"
+      }
+    },
+    {
+      "identity" : "hdf5kit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/hacknus/HDF5Kit",
+      "state" : {
+        "branch" : "master",
+        "revision" : "8da212123529dd825ed9546e20d1ce62d57ab27b"
+      }
+    }
+  ],
+  "version" : 3
+}

@@ -4,19 +4,62 @@
 <dict>
 	<key>NSExtension</key>
 	<dict>
+		<key>CFBundleDocumentTypes</key>
+		<array>
+			<dict>
+				<key>CFBundleTypeName</key>
+				<string>HDF5 File</string>
+				<key>CFBundleTypeExtensions</key>
+				<array>
+                    <string>h5</string>
+                    <string>hdf5</string>
+					<string>thz</string>
+				</array>
+				<key>LSItemContentTypes</key>
+				<array>
+					<string>ch.unibe.hdf5</string>
+				</array>
+			</dict>
+		</array>
 		<key>NSExtensionAttributes</key>
 		<dict>
+            <key>UTExportedTypeDeclarations</key>
+            <array>
+                <dict>
+                    <key>UTTypeIdentifier</key>
+                    <string>ch.unibe.hdf5</string>
+                    <key>UTTypeConformsTo</key>
+                    <array>
+                        <string>public.data</string>
+                    </array>
+                    <key>UTTypeDescription</key>
+                    <string>HDF5 Data File</string>
+                    <key>UTTypeTagSpecification</key>
+                    <dict>
+                        <key>public.filename-extension</key>
+                        <array>
+                            <string>h5</string>
+                            <string>hdf5</string>
+                            <string>thz</string>
+                        </array>
+                        <key>public.mime-type</key>
+                        <string>application/x-hdf5</string>
+                    </dict>
+                </dict>
+            </array>
 			<key>QLIsDataBasedPreview</key>
-			<false/>
+			<true/>
 			<key>QLSupportedContentTypes</key>
-			<array/>
+			<array>
+                <string>ch.unibe.hdf5</string>
+			</array>
 			<key>QLSupportsSearchableItems</key>
-			<false/>
+			<true/>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.quicklook.preview</string>
 		<key>NSExtensionPrincipalClass</key>
-		<string>$(PRODUCT_MODULE_NAME).PreviewViewController</string>
+		<string>$(PRODUCT_MODULE_NAME).PreviewProvider</string>
 	</dict>
 </dict>
 </plist>
