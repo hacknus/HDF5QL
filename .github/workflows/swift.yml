@@ -1,0 +1,25 @@
+name: Build macOS App
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Select Xcode 16.2
+      run: sudo xcode-select -s /Applications/Xcode_16.2.app
+
+    - name: Build using xcodebuild
+      run: |
+        xcodebuild -project HDF5QL.xcodeproj \
+                   -scheme HDF5QL \
+                   -configuration Release \
+                   clean build CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
