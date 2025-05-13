@@ -43,7 +43,7 @@ jobs:
 
       - name: Extract and package the .appex extension
         run: |
-          cd build/Release/HDF5QL.app/Contents/Plugins/
+          cd HDF5QL.app/Contents/Plugins/
           zip -r HDF5QLExtension-${{ matrix.target }}.appex.zip HDF5QLExtension.appex
           mv HDF5QLExtension-${{ matrix.target }}.appex.zip $GITHUB_WORKSPACE/
 
