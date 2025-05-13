@@ -41,19 +41,6 @@ jobs:
           zip -r HDF5QL-${{ matrix.target }}.app.zip HDF5QL.app
           mv HDF5QL-${{ matrix.target }}.app.zip $GITHUB_WORKSPACE/
 
-      - name: Extract and package the .appex extension
-        run: |
-          ls -l build/Release/HDF5QL.app/Contents/PlugIns || echo "⚠️ Directory not found"
-          cd build/Release/HDF5QL.app/Contents/Plugins/
-          echo "🔍 Current directory:"
-          pwd
-          echo "🔍 Listing contents of build/Release/HDF5QL.app/Contents/PlugIns:"
-          ls -l || echo "⚠️ Directory not found"
-          echo "🔍 Packaging .appex bundle..."
-          zip -r HDF5QLExtension-${{ matrix.target }}.appex.zip HDF5QLExtension.appex
-          mv HDF5QLExtension-${{ matrix.target }}.appex.zip $GITHUB_WORKSPACE/
-
-
       - name: Upload .zip of .app
         uses: actions/upload-release-asset@v1
         env:
@@ -62,14 +49,4 @@ jobs:
           upload_url: ${{ github.event.release.upload_url }}
           asset_path: HDF5QL-${{ matrix.target }}.app.zip
           asset_name: HDF5QL-${{ matrix.target }}.app.zip
-          asset_content_type: application/zip
-      
-      - name: Upload .zip of .appex
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: HDF5QLExtension-${{ matrix.target }}.appex.zip
-          asset_name: HDF5QLExtension-${{ matrix.target }}.appex.zip
           asset_content_type: application/zip
