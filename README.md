@@ -13,6 +13,8 @@ brew install hdf5
 
 ## Installation
 
+Pre-compiled binaries are provided for Apple Silicon (Arm64) here: [Releases](https://github.com/hacknus/HDF5QL/releases)
+
 To install, you need to place the main app `HDF5QL.app` in the `Applications` folder and launch it once. This should register the plugin with the operating system and it should work.
 The main app needs to remain in the `Applications` folder.
 
