@@ -7,11 +7,17 @@ on:
 jobs:
   build:
     permissions: write-all
-    runs-on: macos-latest
     strategy:
       matrix:
-        architecture: [x86_64, arm64]  # Build for both x86_64 and arm64 architectures
-
+        include:
+          - os: macos-13
+            target: x86_64-apple-darwin
+            architecture: x86_64
+          - os: macos-14
+            target: aarch64-apple-darwin
+            architecture: arm64
+            
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -22,7 +28,7 @@ jobs:
       - name: Install dependencies (if any)
         run: brew install hdf5
 
-      - name: Build macOS app for ${{ matrix.architecture }}
+      - name: Build macOS app for ${{ matrix.target }}
         run: |
           echo "Building for ${{ matrix.architecture }}..."
           xcodebuild clean build \
