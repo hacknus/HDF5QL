@@ -34,7 +34,7 @@ jobs:
           xcodebuild clean build \
           -scheme HDF5QL \
           -configuration Release \
-          -destination "platform=macOS,arch=${{ matrix.architecture }}." \
+          -destination "platform=macOS,arch=${{ matrix.architecture }}" \
           -derivedDataPath ./build \
           | tee build.log
 
