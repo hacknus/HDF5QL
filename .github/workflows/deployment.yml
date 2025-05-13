@@ -40,7 +40,7 @@ jobs:
       - name: Extract and package the .appex extension
         run: |
           echo "Extracting the .appex (Quick Look extension)..."
-          EXT_PATH="./build/Release/HDF5QL.app/Contents/PlugIns/HDF5QLExtension.appex"
+          EXT_PATH="./build/Release/HDF5QL.app/Contents/Plugins/HDF5QLExtension.appex"
           EXT_ZIP_PATH="./build/HDF5QLExtension-${{ matrix.architecture }}.zip"
           zip -r $EXT_ZIP_PATH $EXT_PATH
 
