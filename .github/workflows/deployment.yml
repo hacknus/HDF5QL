@@ -39,10 +39,16 @@ jobs:
 
       - name: Extract and package the .appex extension
         run: |
-          echo "Extracting the .appex (Quick Look extension)..."
-          EXT_PATH="./build/Release/HDF5QL.app/Contents/Plugins/HDF5QLExtension.appex"
-          EXT_ZIP_PATH="./build/HDF5QLExtension-${{ matrix.architecture }}.zip"
-          zip -r $EXT_ZIP_PATH $EXT_PATH
+          echo "🔍 Searching for .appex bundle..."
+          appex_path=$(find ./build -type d -name "*.appex" | head -n 1)
+          
+          if [ -d "$appex_path" ]; then
+            echo "✅ Found .appex at: $appex_path"
+            zip -r "./build/HDF5QLExtension-${{ matrix.architecture }}.zip" "$appex_path"
+          else
+            echo "❌ .appex bundle not found. Check build configuration or path."
+            exit 1
+          fi
 
       - name: Upload macOS app and extension to GitHub Release
         uses: ncipollo/release-action@v1
