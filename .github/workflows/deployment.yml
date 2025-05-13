@@ -37,10 +37,16 @@ jobs:
 
       - name: Package the .app into a .zip file
         run: |
-          cd build/Release/
+          cd build/Products/Release/
           zip -r HDF5QL-${{ matrix.target }}.app.zip HDF5QL.app
           mv HDF5QL-${{ matrix.target }}.app.zip $GITHUB_WORKSPACE/
-
+          
+      - name: Package the .app into a .zip file
+        run: |
+          cd build/Products/Release/
+          zip -r HDF5QLExtension-${{ matrix.target }}.appex.zip HDF5QLExtension.appex
+          mv HDF5QLExtension-${{ matrix.target }}.appex.zip $GITHUB_WORKSPACE/
+          
       - name: Upload .zip of .app
         uses: actions/upload-release-asset@v1
         env:
@@ -49,4 +55,14 @@ jobs:
           upload_url: ${{ github.event.release.upload_url }}
           asset_path: HDF5QL-${{ matrix.target }}.app.zip
           asset_name: HDF5QL-${{ matrix.target }}.app.zip
+          asset_content_type: application/zip
+      
+      - name: Upload .zip of .appex
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: HDF5QLExtension-${{ matrix.target }}.appex.zip
+          asset_name: HDF5QLExtension-${{ matrix.target }}.appex.zip
           asset_content_type: application/zip
