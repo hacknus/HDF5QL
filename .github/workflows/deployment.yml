@@ -7,17 +7,14 @@ on:
 jobs:
   build:
     permissions: write-all
+    runs-on: macos-latest
     strategy:
       matrix:
         include:
-          - os: macos-13
-            target: x86_64-apple-darwin
+          - target: x86_64-apple-darwin
             architecture: x86_64
-          - os: macos-14
-            target: aarch64-apple-darwin
+          - target: aarch64-apple-darwin
             architecture: arm64
-            
-    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
