@@ -40,13 +40,13 @@ jobs:
 
       - name: Package the .app into a .zip file
         run: |
-          cd build/Products/Release/
+          cd build/Release/
           zip -r HDF5QL-${{ matrix.target }}.app.zip HDF5QL.app
           mv HDF5QL-${{ matrix.target }}.app.zip $GITHUB_WORKSPACE/
           
       - name: Package the .app into a .zip file
         run: |
-          cd build/Products/Release/
+          cd build/Release/
           zip -r HDF5QLExtension-${{ matrix.target }}.appex.zip HDF5QLExtension.appex
           mv HDF5QLExtension-${{ matrix.target }}.appex.zip $GITHUB_WORKSPACE/
           
