@@ -20,6 +20,9 @@ jobs:
     - name: Select Xcode 16.2
       run: sudo xcode-select -s /Applications/Xcode_16.2.app
 
+    - name: Resolve Swift Packages
+      run: xcodebuild -resolvePackageDependencies -project HDF5QL.xcodeproj
+    
     - name: Build using xcodebuild
       run: |
         xcodebuild -project HDF5QL.xcodeproj \
