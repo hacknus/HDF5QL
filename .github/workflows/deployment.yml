@@ -30,23 +30,23 @@ jobs:
 
       - name: Build macOS app for ${{ matrix.target }}
         run: |
-          echo "Building for ${{ matrix.architecture }}..."
+          xcodebuild -resolvePackageDependencies -project HDF5QL.xcodeproj
           xcodebuild clean build \
-            -scheme HDF5QL \
-            -configuration Release \
-            -destination "platform=macOS,arch=${{ matrix.architecture }}" \
-            BUILD_DIR=./build \
-            | tee build.log
+          -scheme HDF5QL \
+          -configuration Release \
+          -destination "platform=macOS,arch=${{ matrix.architecture }}." \
+          -derivedDataPath ./build \
+          | tee build.log
 
       - name: Package the .app into a .zip file
         run: |
-          cd build/Release/
+          cd build/Products/Release/
           zip -r HDF5QL-${{ matrix.target }}.app.zip HDF5QL.app
           mv HDF5QL-${{ matrix.target }}.app.zip $GITHUB_WORKSPACE/
           
       - name: Package the .app into a .zip file
         run: |
-          cd build/Release/
+          cd build/Products/Release/
           zip -r HDF5QLExtension-${{ matrix.target }}.appex.zip HDF5QLExtension.appex
           mv HDF5QLExtension-${{ matrix.target }}.appex.zip $GITHUB_WORKSPACE/
           
