@@ -43,7 +43,12 @@ jobs:
 
       - name: Extract and package the .appex extension
         run: |
-          cd HDF5QL.app/Contents/Plugins/
+          cd build/Release/HDF5QL.app/Contents/Plugins/
+          echo "🔍 Current directory:"
+          pwd
+          echo "🔍 Listing contents of build/Release/HDF5QL.app/Contents/PlugIns:"
+          ls -l build/Release/HDF5QL.app/Contents/PlugIns || echo "⚠️ Directory not found"
+          echo "🔍 Packaging .appex bundle..."
           zip -r HDF5QLExtension-${{ matrix.target }}.appex.zip HDF5QLExtension.appex
           mv HDF5QLExtension-${{ matrix.target }}.appex.zip $GITHUB_WORKSPACE/
 
