@@ -1,3 +1,5 @@
+[![Swift](https://github.com/hacknus/HDF5QL/actions/workflows/swift.yml/badge.svg)](https://github.com/hacknus/HDF5QL/actions/workflows/swift.yml)
+
 # A HDF5 QuickLook Plugin for macOS Finder
 
 This is a simple Quicklook plugin for macOS Finder to preview the structure of HDF5 files. This works with extensions `.h5` and `.hdf5`.
