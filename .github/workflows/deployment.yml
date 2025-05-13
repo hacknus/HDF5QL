@@ -50,9 +50,22 @@ jobs:
             exit 1
           fi
 
-      - name: Upload macOS app and extension to GitHub Release
-        uses: ncipollo/release-action@v1
+      - name: Upload .zip of .app
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          files: |
-            ./build/HDF5QL-${{ matrix.architecture }}.zip
-            ./build/HDF5QLExtension-${{ matrix.architecture }}.zip
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./build/HDF5QL-${{ matrix.architecture }}.zip
+          asset_name: HDF5QL-${{ matrix.architecture }}.zip
+          asset_content_type: application/zip
+      
+      - name: Upload .zip of .appex
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./build/HDF5QLExtension-${{ matrix.architecture }}.zip
+          asset_name: HDF5QLExtension-${{ matrix.architecture }}.zip
+          asset_content_type: application/zip
