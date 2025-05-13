@@ -1,0 +1,57 @@
+name: Build and Release macOS App
+
+on:
+  release:
+    types: [created] # Trigger workflow when a new release is created
+
+jobs:
+  build:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        architecture: [x86_64, arm64]  # Build for both x86_64 and arm64 architectures
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Select Xcode 16.2
+        run: sudo xcode-select -s /Applications/Xcode_16.2.app
+
+      - name: Set up Xcode
+        uses: actions/setup-xcode@v2
+        with:
+          xcode-version: '16.2'  # Set to the version of Xcode you are using
+
+      - name: Install dependencies (if any)
+        run: brew install hdf5
+
+      - name: Build macOS app for ${{ matrix.architecture }}
+        run: |
+          echo "Building for ${{ matrix.architecture }}..."
+          xcodebuild clean build \
+            -scheme HDF5QL \
+            -configuration Release \
+            -destination "platform=macOS,arch=${{ matrix.architecture }}" \
+            BUILD_DIR=./build \
+            | tee build.log
+
+      - name: Package the .app into a .zip file
+        run: |
+          ARCHIVE_PATH="./build/Release/HDF5QL.app"
+          ZIP_PATH="./build/HDF5QL-${{ matrix.architecture }}.zip"
+          zip -r $ZIP_PATH $ARCHIVE_PATH
+
+      - name: Extract and package the .appex extension
+        run: |
+          echo "Extracting the .appex (Quick Look extension)..."
+          EXT_PATH="./build/Release/HDF5QL.app/Contents/PlugIns/HDF5QLExtension.appex"
+          EXT_ZIP_PATH="./build/HDF5QLExtension-${{ matrix.architecture }}.zip"
+          zip -r $EXT_ZIP_PATH $EXT_PATH
+
+      - name: Upload macOS app and extension to GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          files: |
+            ./build/HDF5QL-${{ matrix.architecture }}.zip
+            ./build/HDF5QLExtension-${{ matrix.architecture }}.zip
