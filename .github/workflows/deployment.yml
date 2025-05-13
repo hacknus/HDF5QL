@@ -25,6 +25,9 @@ jobs:
       - name: Install dependencies (if any)
         run: brew install hdf5
 
+      - name: Resolve Swift Packages
+        run: xcodebuild -resolvePackageDependencies -project HDF5QL.xcodeproj
+
       - name: Build macOS app for ${{ matrix.target }}
         run: |
           echo "Building for ${{ matrix.architecture }}..."
