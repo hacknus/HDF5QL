@@ -2,6 +2,8 @@
 
 # A HDF5 QuickLook Plugin for macOS Finder
 
+<a href="https://github.com/hacknus/HDF5QL/releases"><img src="icon.png" alt=“” width="100" height="100"> </img> </a>
+
 This is a simple Quicklook plugin for macOS Finder to preview the structure of HDF5 files. This works with extensions `.h5` and `.hdf5`.
 
 ![screenshot](screenshot.png)
