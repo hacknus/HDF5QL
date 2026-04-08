@@ -12,7 +12,20 @@
 		<key>HDF5QLExtension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>15C0E19D2D6602B400308333</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>15C0E1D02D6602FE00308333</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

@@ -2,54 +2,28 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>HDF5 File</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>ch.unibe.hdf5</string>
+			</array>
+		</dict>
+	</array>
 	<key>NSExtension</key>
 	<dict>
-		<key>CFBundleDocumentTypes</key>
-		<array>
-			<dict>
-				<key>CFBundleTypeName</key>
-				<string>HDF5 File</string>
-				<key>CFBundleTypeExtensions</key>
-				<array>
-                    <string>h5</string>
-                    <string>hdf5</string>
-				</array>
-				<key>LSItemContentTypes</key>
-				<array>
-					<string>ch.unibe.hdf5</string>
-				</array>
-			</dict>
-		</array>
 		<key>NSExtensionAttributes</key>
 		<dict>
-            <key>UTExportedTypeDeclarations</key>
-            <array>
-                <dict>
-                    <key>UTTypeIdentifier</key>
-                    <string>ch.unibe.hdf5</string>
-                    <key>UTTypeConformsTo</key>
-                    <array>
-                        <string>public.data</string>
-                    </array>
-                    <key>UTTypeDescription</key>
-                    <string>HDF5 Data File</string>
-                    <key>UTTypeTagSpecification</key>
-                    <dict>
-                        <key>public.filename-extension</key>
-                        <array>
-                            <string>h5</string>
-                            <string>hdf5</string>
-                        </array>
-                        <key>public.mime-type</key>
-                        <string>application/x-hdf5</string>
-                    </dict>
-                </dict>
-            </array>
 			<key>QLIsDataBasedPreview</key>
 			<true/>
 			<key>QLSupportedContentTypes</key>
 			<array>
-                <string>ch.unibe.hdf5</string>
+				<string>ch.unibe.hdf5</string>
 			</array>
 			<key>QLSupportsSearchableItems</key>
 			<true/>
